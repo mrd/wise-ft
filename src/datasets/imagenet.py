@@ -103,8 +103,8 @@ class ImageNetSubsample(ImageNet):
     def get_class_sublist_and_mask(self):
         raise NotImplementedError()
 
-    def populate_train(self):
-        pass
+    #def populate_train(self):
+        #pass
 
     def project_logits(self, logits, device):
         return project_logits(logits, self.class_sublist_mask, device)

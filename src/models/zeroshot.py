@@ -67,7 +67,7 @@ def eval(args):
     else:
         image_encoder = ImageEncoder(args, keep_lang=True)
         classification_head = get_zeroshot_classifier(args, image_encoder.model)
-        delattr(image_encoder.model, 'transformer')
+        #delattr(image_encoder.model, 'transformer')
         classifier = ImageClassifier(image_encoder, classification_head, process_images=False)
     
     evaluate(classifier, args)

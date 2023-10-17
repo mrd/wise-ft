@@ -15,8 +15,8 @@ class ImageEncoder(torch.nn.Module):
         
         self.cache_dir = args.cache_dir
 
-        if not keep_lang and hasattr(self.model, 'transformer'):
-            delattr(self.model, 'transformer')
+        #if not keep_lang and hasattr(self.model, 'transformer'):
+        #   delattr(self.model, 'transformer')
 
     def forward(self, images):
         assert self.model is not None
