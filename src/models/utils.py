@@ -1,6 +1,5 @@
 import os
 
-from pathlib import Path
 import torch
 import pickle
 from tqdm import tqdm
@@ -42,10 +41,6 @@ def accuracy(output, target, topk=(1,)):
 def torch_save(classifier, save_path):
     if os.path.dirname(save_path) != '':
         os.makedirs(os.path.dirname(save_path), exist_ok=True)
-    name = Path(save_path).name
-    stem = name[:-3] # old python3.6 doesn't have with_stem in pathlib :(
-    sd = classifier.image_encoder.model.state_dict()
-    torch.save(sd, Path(save_path).with_name(f'{stem}_state_dict.pt'))
     with open(save_path, 'wb') as f:
         pickle.dump(classifier.cpu(), f)
 

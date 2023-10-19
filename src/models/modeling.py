@@ -4,6 +4,7 @@ import copy
 import clip.clip as clip
 
 from src.models import utils
+from pathlib import Path
 
 
 class ImageEncoder(torch.nn.Module):
@@ -78,6 +79,12 @@ class ImageClassifier(torch.nn.Module):
     def save(self, filename):
         print(f'Saving image classifier to {filename}')
         utils.torch_save(self, filename)
+        name = Path(filename).name
+        stem = name[:-3] # old python3.6 doesn't have with_stem in pathlib :(
+        enc_sd = self.image_encoder.model.state_dict()
+        torch.save(enc_sd, Path(filename).with_name(f'{stem}_encoder_state_dict.pt'))
+        cla_sd = self.classification_head.state_dict()
+        torch.save(cla_sd, Path(filename).with_name(f'{stem}_classer_state_dict.pt'))
 
     @classmethod
     def load(cls, filename):
