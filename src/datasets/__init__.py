@@ -10,3 +10,4 @@ from .imagenet_vid_robust import ImageNetVidRobustValClasses, ImageNetVidRobust
 from .iwildcam import IWildCamID, IWildCamOOD, IWildCamIDNonEmpty, IWildCamOODNonEmpty, IWildCam
 from .objectnet import ObjectNetValClasses, ObjectNet
 from .ytbb_robust import YTBBRobustValClasses, YTBBRobust
+from .percept import PerceptGreenness
